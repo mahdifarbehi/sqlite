@@ -3,7 +3,9 @@
 #                          make clean   -> deletes build/
 
 CC = clang
-CFLAGS = -Wall
+# -std=c17: use the C17 standard.  -Wall -Wextra -Wpedantic: many useful warnings.
+# -g: keep debug info so a debugger (lldb) can show your source lines.
+CFLAGS = -std=c17 -Wall -Wextra -Wpedantic -g
 
 build/db: src/*.c
 	mkdir -p build

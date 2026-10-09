@@ -19,3 +19,13 @@ The words we use, defined once. (Database internals are the domain here, so thos
 - **Cell** — one entry in a Node (in a leaf: a key + its Row).
 - **Key** — the value rows are sorted and looked up by: our `id`. Unique.
 - **B-tree** — the on-disk tree of Nodes that keeps Rows sorted and fast to find. What makes this a database.
+
+## Coming later (Part 2–3)
+
+- **Byte order** — which byte of a multi-byte number comes first in memory/on disk. We pick one for the file format.
+- **Durability** — once a write says "done", the data survives a crash or power loss.
+- **fsync** — asks the OS to really push file data to the disk, not just its memory cache.
+- **WAL (write-ahead log)** — write what you're about to change to a log first, so a crash can be repaired on restart. Postgres's core recovery idea.
+- **Buffer pool** — a fixed set of in-memory page slots, with eviction when full. Postgres calls it shared buffers.
+- **Transaction** — a group of changes that all happen or none do (`BEGIN`/`COMMIT`/`ROLLBACK`).
+- **MVCC** — keep several versions of a row so readers don't block writers. How Postgres does isolation.
